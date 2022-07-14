@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course</title>
+
+</head>
+<body>
+    <form action="/course" method="post">
+        <input type="text" name="name" placeholder="course name" id="name">
+        <input type="text" name="fees" id="fees" placeholder="fees">
+        <button>Submit</button>
+    </form>
+    <table>
+        <thead>
+            <th>Course</th>
+            <th>Fees</th>
+        </thead>
+        <tbody>
+            {% for course in courses %}
+            <tr>
+                <td>{{course[1]}}</td>
+                <td>{{course[2]}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <script>
+        {% if status %}
+        alert("{{status}}")
+        {% endif %}
+    </script>
+</body>
+</html>

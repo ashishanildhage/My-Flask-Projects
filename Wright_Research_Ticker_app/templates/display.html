@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Price Viewer</title>
+</head>
+<body>
+    <div>
+        <h1>Enter Ticker for Information:</h1>
+        <form action="/" method="post" >
+            <input type="text" name="symbol" placeholder="Search for ticker symbol">
+            <input type="Submit" onclick="loadDoc()">
+        </form>
+    </div>
+    <script>
+        function loadDoc() {
+          const xhttp = new XMLHttpRequest();
+          xhttp.onload = function() {
+            document.getElementById("demo").innerHTML =
+            this.responseText;
+          }
+          
+            xhttp.open("GET", "ajax_display.html");
+            xhttp.send();   
+        }
+    </script>
+
+    <div id='demo'>
+        <table>
+            <tr>
+              <td>Current Market Price</td>
+              <td>Rs. {{output[0]}}</td>
+            </tr>
+            <tr>
+                <td>Percent Change</td>
+                <td>{{output[1]}} %</td>
+              </tr>
+              <tr>
+                <td>Open</td>
+                <td>Rs. {{output[2]}}</td>
+              </tr>
+              <tr>
+                <td>High</td>
+                <td>Rs. {{output[3]}}</td>
+              </tr>
+              <tr>
+                <td>Low</td>
+                <td>Rs. {{output[4]}}</td>
+              </tr>
+              <tr>
+                <td>Close</td>
+                <td>Rs. {{output[5]}}</td>
+              </tr>
+              <tr>
+                <td>Percent Change in 2 weeks</td>
+                <td>{{output[6]}} %</td>
+              </tr>
+        </table>
+      </div>
+</body>
+</html>
